@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-first-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      
+
+
+
+#Learnings
+
+# pod is the smallest deployable unit of kubernetes.
+# version is v1, to find the  version run kubectl api-resources.
+# metadats is used to identify the resource, name: my-first-pod is used to identify this resource.
+# specs defines the container and its specifications
+# A pod can run one or more containers, but most commonly it runs just one.
+
