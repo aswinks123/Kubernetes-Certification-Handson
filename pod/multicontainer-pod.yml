@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multicontainer-pod
+spec:
+  containers:
+    - name: nginx-container-1
+      image: nginx
+
+    - name: busybox-container
+      image: busybox
+      command: ["sh", "-c", "while true; do echo hello; sleep 10; done"]
+
+# Learnings 
+
+# You can have multiple containers in a pod
+# Make sure pods are linked to different ports
+# You can't run multiple instance of same pod image, because those pods are listening on container port, this will not work as containers in a pod share same network
+# To see more information about the pod and its containers, use command: kubectl describe pod <pod name>
+# kubectl exec -it multicontainer-pod bash will directly connect to first container in pod.
+# To log in to specific pod use: kubectl exec -it multicontainer-pod -c <containe-name> /bin/sh
