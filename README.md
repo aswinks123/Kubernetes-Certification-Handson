@@ -1,3 +1,1 @@
-# kubernetes-certification-handson
-kubernetes-certification-handson
-This is a test line
+Hands on learnings to pass Certified Kubernetes Administrator exam
