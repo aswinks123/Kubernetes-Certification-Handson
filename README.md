@@ -1,5 +1,7 @@
-Hands on learnings to pass Certified Kubernetes Administrator exam
+# Hands on learnings for Certified Kubernetes Administrator exam
 
+
+## Key learnings
 
 #To list all the resources 
 kubectl api-resources
