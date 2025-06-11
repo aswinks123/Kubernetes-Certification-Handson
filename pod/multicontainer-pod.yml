@@ -12,7 +12,6 @@ spec:
       command: ["sh", "-c", "while true; do echo hello; sleep 10; done"]
 
 # Learnings 
-
 # You can have multiple containers in a pod
 # Make sure pods are linked to different ports
 # You can't run multiple instance of same pod image, because those pods are listening on container port, this will not work as containers in a pod share same network
