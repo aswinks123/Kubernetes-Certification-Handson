@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-first-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      #Port mapping is for informational purpose only. It doesn't manage the port tha applicaion is running
+      ports:
+        - containerPort: 80 # this shows in which port the application inside the container runs. It should be the port where the app listens
+
+      
+
+
+# Learnings
+# Kubernetes doesn’t do anything automatically with containerPort. It’s mainly for documentation and clarity, so humans and tools (like kubectl describe) can understand the container’s expected port.
+# If you want to reach/publish the Pod: 1-Use a Service object to expose it. 2-kubectl port-forward for local access.
+# port forwarding eg: kubectl port-forward pod/mypod 8080:80
