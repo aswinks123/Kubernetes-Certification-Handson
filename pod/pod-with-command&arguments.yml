@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-container
+spec:
+  containers:
+    - name: busybox-container
+      image: busybox
+      command: ["ping", "-c", "100", "google.com"]
+
+
+
+# kubectl logs command-container
+# This will ping the google.com. but you can't see the output on terminal. To see the output you have to attach the container to the terminal using the command 
+# kubectl attach <container name>
