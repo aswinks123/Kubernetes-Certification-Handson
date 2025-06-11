@@ -3,22 +3,25 @@
 
 ## Key learnings
 
-#To list all the resources 
+To list all the resources 
 
 kubectl api-resources
 
-#Validate the command using dry run
+Validate the command using dry run
 
 command --dry-run=client #validate the command. it will not create resources
 
-#Generate a manifest output along with resource creation 
+Generate a manifest output along with resource creation 
 
 kubectl run nginx2 --image=nginx -o yaml
 
-#Generate the manifest output only with out creating resource
+Generate the manifest output only with out creating resource
 
 kubectl run nginx2 --image=nginx --dry-run=client -o yaml
 
-#To log in to a specific containet in multicontainer pod
+To log in to a specific containet in multicontainer pod
 
 kubectl exec -it multicontainer-pod -c <container-name> /bin/sh
+
+To see details and structure of a resource
+kubectl explain pods
