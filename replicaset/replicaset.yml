@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: my-first-replicaset
+spec:
+  replicas: 3  # 3 replica of this pod
+  selector:
+    matchLabels:
+      tier: frontend  # replicaset uses this label to find the pod that are part of it
+  template:
+    metadata:
+      labels:
+        tier: frontend # It must match with the selector label inorder for replicaset to identify this pod
+    spec:
+      containers:
+      - name: mywebserver
+        image: nginx:1.27.5
+
+
+
+#Learnings
+#Replicaset ensures the required replicas of pods are always running.
+# When a replicaset is updated eg with a new image the existing pods won't be updated. it only affect the newly created pods.
+#To recreate the all pods with new image you have to scale it down to zero and scale again to the desired count
+# kubectl scale --replicas=0 rs/my-first-replicaset  and kubectl scale --replicas=3 rs/my-first-replicaset  
