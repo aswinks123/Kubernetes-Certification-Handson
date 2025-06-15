@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-        tier: frontend # It must match with the selector label inorder for replicaset to identify this pod
+        tier: frontend # It must match with the selector label inorder for daemonset to identify this pod
     spec:
       containers:
       - name: my-daemonset
