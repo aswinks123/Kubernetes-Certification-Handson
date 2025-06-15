@@ -16,8 +16,6 @@ spec:
       - name: mywebserver
         image: nginx
 
-
-
 #Learnings
 #Deployments are similar to replica set but with additional features like rollback and update
 #Deployments in the backend uses replicaset to control the pod 

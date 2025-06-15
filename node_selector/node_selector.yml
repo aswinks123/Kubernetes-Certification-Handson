@@ -9,12 +9,6 @@ spec:
   nodeSelector:
     size: Large
 
-
-
-
-
-
-
 #Learnings
 #Assig labels to Nodes, Node selector uses this label to decide the node to schedule.
 # It can be used to isolate pods or for compliance purpose, eg: to make sure it is deployed on a particular region nodes etc

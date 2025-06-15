@@ -16,8 +16,6 @@ spec:
       - name: mywebserver
         image: nginx:1.27.5
 
-
-
 #Learnings
 #Replicaset ensures the required replicas of pods are always running.
 # When a replicaset is updated eg with a new image the existing pods won't be updated. it only affect the newly created pods.

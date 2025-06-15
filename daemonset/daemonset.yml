@@ -1,8 +1,22 @@
-apiVersion: v1
-kind: Daemonset
-metadata:
-  name: node-selector-pod
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: my-first-daemonset
 spec:
-  containers:
-    - name: nginx-pod
-      image: nginx
+  selector:
+    matchLabels:
+      tier: frontend  
+  template:
+    metadata:
+      labels:
+        tier: frontend # It must match with the selector label inorder for replicaset to identify this pod
+    spec:
+      containers:
+      - name: my-daemonset
+        image: nginx
+
+#Learnings
+#Daemonset ensures that only one instance of daemonset pod are running in a node.
+#When a new node is added, a new new daemon set managed pod will be scheduled on that node.
+#When a node is removed, the daemonset automatically removes the daemonset.
+#Usecase: To deploy an antivirus agent or a log collector agent on each node automatically.
