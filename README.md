@@ -33,3 +33,7 @@ Note: You use expose in Docker file to show the person who runs the image, in wh
 #To allow port forwarding
 
 kubectl port-forward pod/nginx 8080:80
+
+#To add label to node
+
+kubectl label node minikube size=Large

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: my-first-deployment
+spec:
+  replicas: 3  # 3 replica of this pod
+  selector:
+    matchLabels:
+      tier: frontend  # replicaset uses this label to find the pod that are part of it
+  template:
+    metadata:
+      labels:
+        tier: frontend # It must match with the selector label inorder for replicaset to identify this pod
+    spec:
+      containers:
+      - name: mywebserver
+        image: nginx
+
+
+
+#Learnings
+#Deployments are similar to replica set but with additional features like rollback and update
+#Deployments in the backend uses replicaset to control the pod 
+#Deployments have revision or version that can be used to rollback to previous versions
+#kubectl rollout history deploy/my-first-deployment : To view the revision history
+#When a deployment is updated, the old replicaset is automatically preserves by setting the replicase=0, so it can be used to create old pods during rollback.
+#To roll back to old version: kubectl rollout undo deploy my-first-deployment
+#To rollback to particular revision: kubectl rollout undo deploy my-first-deployment --to-revision=2
+
+
