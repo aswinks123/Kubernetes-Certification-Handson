@@ -36,4 +36,7 @@ kubectl port-forward pod/nginx 8080:80
 
 #To add label to node
 
-kubectl label node minikube size=Large
+kubectl label node minikube disktype=ssd
+
+#To remove a label from a node
+kubectl label node minikube disktype-

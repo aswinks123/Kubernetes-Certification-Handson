@@ -1,0 +1,27 @@
+# Pods will be scheduled on Node if the requirements are met, if not it will be scheduled on any nodes (just a preference)
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx-pod
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1 #Uses weight to rank nodes. 1 it low and 100 is highest weight, weight is mandatory
+          preference:  
+            matchExpressions:   #pod will be scheduled on node with the label disktype=ssd. It will still schedule the pod on any node if label doesn't exist(prefered)
+              - key: disktype
+                operator: In
+                values:
+                  - ssd
+  
+  containers:
+    - name: nginx-container
+      image: nginx
+
+
+#Learnings:
+#weight set the preferences, i is low and 100 is high.
+#Even if none matches, the pod will still schedule on any node as its a prefered scheduling and not required scheduling.
+#It can have multiple weights

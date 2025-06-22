@@ -1,0 +1,25 @@
+# Pods will be scheduled on Node if and only if the requirements are met.
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx-pod
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:   #pod will we dcheduled only on node with the label disktype=ssd. if not it will wait in pending state
+            - key: disktype
+              operator: In
+              values:
+                - ssd
+  
+  containers:
+    - name: nginx-container
+      image: nginx
+
+#Learnings
+#requiredDuringSchedulingIgnoredDuringExecution ensures that only the pods will be scheduled on node with the particular requirement (mandatory)
+#gnoredDuringExecution: This means the constrants are checked only at the time of scheduling and not after scheduling. ie, even if we remove the disktype=ssd after the pod is schedule, it will not affect the pod.
+#Other operators: In, NotIn, Exists (checks only the labels key exist or not), DoesNotExist, Gt and Lt (greater than and less than)
