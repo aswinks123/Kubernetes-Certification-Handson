@@ -1,7 +1,7 @@
 # Hands on learnings for Certified Kubernetes Administrator exam
 
 
-## Key learnings
+## Important finding during my learnings
 
 #To list all the resources 
 
@@ -40,3 +40,5 @@ kubectl label node minikube disktype=ssd
 
 #To remove a label from a node
 kubectl label node minikube disktype-
+
+
