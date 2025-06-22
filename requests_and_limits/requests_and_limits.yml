@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-limits
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "0.5"
+        limits:
+          memory: "500Mi"
+          cpu: "1"
+
+#Learnings
+#It prevent the pod from over using resources
+#Requests specify the min required(soft) resource for the pod to run/schedule
+#Limits are hard limit that mention the maximum resource a pod can use.
+#0.5 in CPU means half of a core, 1 mean one core
+#The container will be OOMKilled (Out Of Memory Killed).
+#In a multicontainer pod,  it will affect only the container that exceed the limit not other containers, also only that particular container is killed.
+#When one container in a multi-container pod exceeds its memory limit and is killed (OOMKilled), the pod itself will still show as Running

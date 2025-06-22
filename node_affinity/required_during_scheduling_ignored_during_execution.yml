@@ -9,7 +9,7 @@ spec:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
-          - matchExpressions:   #pod will we dcheduled only on node with the label disktype=ssd. if not it will wait in pending state
+          - matchExpressions:   #pod will be scheduled only on node with the label disktype=ssd. if not it will wait in pending state
             - key: disktype
               operator: In
               values:
