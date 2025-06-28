@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-service   #Name of the service
+spec: 
+  selector:
+    app: backend   #Service uses this selector to identify the backend pods that are to be added as endpoints.
+  ports:
+    - port: 8081  #Port where ther service listen to
+      targetPort: 80 #Port where the service route the traffic to. ie, pods are listening to the mentioned port.
+
+
+#Learnings
+#Default service type is ClustreIP
+#If you are using a minikube then use the following command to port forward: kubectl port-forward service/simple-service 8080:8081
+#(The traffic that hit the 8080 port of host will be forwarded to the 8081 port of service simple-service, which in turn routes it to the backend pods on port 80.)
+# This port forwarding scenario is only because the type of service is cluster IP and is only accessible with in the cluster

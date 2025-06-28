@@ -40,6 +40,11 @@ Note: You use expose in Docker file to show the person who runs the image, in wh
 
 kubectl port-forward pod/nginx 8080:80
 
+ #To Port-forward the service
+
+ kubectl port-forward service/my-service 8080:80
+
+
 #To add label to node
 
 kubectl label node minikube disktype=ssd
@@ -48,4 +53,6 @@ kubectl label node minikube disktype=ssd
 
 kubectl label node minikube disktype-
 
+#To see the endpoints of a service
 
+kubectl get endpoints <service name>
