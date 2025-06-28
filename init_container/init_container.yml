@@ -1,0 +1,23 @@
+apiVersion: v1 
+kind: Pod
+metad: 
+  name: init-container-pod 
+spec:
+  containers:
+    - name: primary-container  # This is the primary container. It will only start after the init containers ran successfully.
+      image: nginx
+  initContainers:     
+    - name : check-google   # First init container
+      image: alpine/curl:8.14.1
+      command: ["ping", "-c", "5" ,"google.com"]
+    - name: check-kubernetes # Second init container
+      image: alpine/curl:8.14.1
+      command: ["curl", "kubernetes.io"]
+
+#Learnings
+#Init containers are special containers that run before the main application containers in a pod.
+#Run one after another, in order. Must succeed before the main container starts. Useful for setup tasks.
+#Use them when you need to: Wait for a service to be ready. Download configs or secrets. Run DB migrations or checks.
+#First both init containers run, then after its successful, then the mian container starts.
+#If an init container fails: The pod does not proceed to start the main containers. Kubernetes will retry the init container until it succeeds or until the pod is deleted.
+#Kubernetes restarts the failing init container repeatedly (default backoff policy). It continues trying forever (unless restartPolicy is set to Never or OnFailure).
