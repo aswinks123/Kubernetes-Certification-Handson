@@ -1,7 +1,13 @@
 # Hands on learnings for Certified Kubernetes Administrator exam
 
+```sh
+“ You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself the cause of the results of your activities, nor be attached to inaction. ”
+
+— Bhagavad Gita 2.47
+```
 
 ## Important finding from my handson learnings.
+
 
 #To list all the resources 
 
