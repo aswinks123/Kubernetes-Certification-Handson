@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: high-priority-deployment
+spec:
+  replicas: 3  # 3 replica of this pod
+  selector:
+    matchLabels:
+      tier: frontend  # replicaset uses this label to find the pod that are part of it
+  template:
+    metadata:
+      labels:
+        tier: frontend # It must match with the selector label inorder for replicaset to identify this pod
+    spec:
+      priorityClassName: High-priority # This is the name of priority class that we created using the command: 
+      containers:
+      - name: mywebserver
+        image: nginx
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "30m"   #In Kubernetes, CPU is specified in millicores (1/1000th of a core).30 means 3% of one cpu core.
+
+#Learnings
+#First creare a priority class: kubectl create priorityclass High-priority  --value=1000  --global-default=false  --description="This is a high priority class"
+#Pods with higher priority values are scheduled before lower-priority ones when resources are limited.
+#If a high-priority pod cannot be scheduled because there are not enough resources, Kubernetes can evict lower-priority pods (preemption)
+#Preemption only works if the low-priority pods don’t have preemptionPolicy: Never
