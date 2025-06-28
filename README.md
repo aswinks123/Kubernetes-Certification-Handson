@@ -1,7 +1,7 @@
 # Hands on learnings for Certified Kubernetes Administrator exam
 
 
-## Important finding during my learnings
+## Important finding from my handson learnings.
 
 #To list all the resources 
 
@@ -39,6 +39,7 @@ kubectl port-forward pod/nginx 8080:80
 kubectl label node minikube disktype=ssd
 
 #To remove a label from a node
+
 kubectl label node minikube disktype-
 
 
