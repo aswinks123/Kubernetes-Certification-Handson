@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: my-first-deployment
+spec:
+  replicas: 3  # 3 replica of this pod
+  selector:
+    matchLabels:
+      app: backend  # replicaset uses this label to find the pod that are part of it
+  template:
+    metadata:
+      labels:
+        app: backend # It must match with the selector label of the service to automatically register it as an endpoint
+    spec:
+      containers:
+      - name: mywebserver
+        image: nginx

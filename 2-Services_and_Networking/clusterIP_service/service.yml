@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-service   #Name of the service
+  name: clusterip-service   #Name of the service
 spec: 
   selector:
     app: backend   #Service uses this selector to identify the backend pods that are to be added as endpoints.

@@ -1,0 +1,20 @@
+#nodePort service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-service   #Name of the service
+spec: 
+  type: NodePort #It will open a port on all the nodes
+  selector:
+    app: backend   #Service uses this selector to identify the backend pods that are to be added as endpoints.
+  ports:
+    - port: 8081  #Port where ther service listen to. Clients inside the cluster can access this port
+      targetPort: 80 #Port where the service route the traffic to. ie, pods are listening to the mentioned port.
+      nodePort: 30556
+
+#Learnings
+#If you did not specify the nodeport IP manually, it will automatically assign an IP from the range(30000–32767)
+#Nodeport allows the user to connect to the service through the node port( port that is opened on all nodes)
+#When a request reaches the node port, it will be routed to the service and then there by routed to the backend pods
+#Drawback: Users have to manually type the port along with the nodeIP. also there will be multiple node IP that all exposes the same node port.
