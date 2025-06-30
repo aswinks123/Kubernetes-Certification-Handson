@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: clusterip-service   #Name of the service
+  name: loadbalancer-service   #Name of the service
 spec: 
   type: LoadBalancer #This will create an external load balancer infront of the nodes.
   selector:
@@ -12,7 +12,7 @@ spec:
 
 
 #Learnings
-#Load balancer type creataes a loadbalancer infront of kubernetes cluster and receives the traffic from user and distribute it among the node(to the node port)
+#Load balancer type create a loadbalancer infront of kubernetes cluster and receives the traffic from user and distribute it among the node(to the node port)
 #Load balancer will also create a node port. the traffic from LB is forwarded to the nodePort IP
 #Its just like placing a load balancer infront of the nodePort
 #This works only when using managed Kubernetes services on cloud. It will not directly work even though you use EC2 kubeadm setup
