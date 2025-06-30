@@ -1,0 +1,26 @@
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aswinks.com-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /    #This tells the NGINX Ingress controller to strip the path and rewrite it to / when forwarding to the backend services.
+spec:
+  rules:
+  - host: aswinks.com  #Defines routing rules for the host 
+    http:
+      paths:
+      - path: /images
+        pathType: Prefix   # consider aswinks.com/image and aswinks.com/image/ as same
+        backend:
+          service:
+            name: image-service
+            port:
+              number: 80
+      - path: /video
+        pathType: Prefix
+        backend:
+          service:
+            name: video-service
+            port:
+              number: 80

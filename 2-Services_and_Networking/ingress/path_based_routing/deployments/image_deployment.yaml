@@ -1,0 +1,23 @@
+# image pod deployment yaml file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+     app: image-pods
+  template:
+    metadata:
+      labels:
+        app: image-pods
+    spec:
+      containers:
+      - name: image-container
+        image: hashicorp/http-echo
+        args:
+        - "-text=This is the message from image pod. Serving the images.."
+        ports:
+        - containerPort: 5678

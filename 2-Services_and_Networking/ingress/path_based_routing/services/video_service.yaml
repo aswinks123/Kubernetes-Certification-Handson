@@ -1,0 +1,14 @@
+#Service that serve backend pods that processes videos
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: video-service
+spec:
+  selector:
+    app: video-pods
+  ports:
+    - port: 80
+      targetPort: 5678
+  
+

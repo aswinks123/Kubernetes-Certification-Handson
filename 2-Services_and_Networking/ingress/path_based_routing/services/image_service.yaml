@@ -1,0 +1,17 @@
+#Service that serve backend pods that processes images
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: image-service
+spec:
+  selector:
+    app: image-pods
+  ports:
+    - port: 80
+      targetPort: 5678
+  
+
+
+
+
