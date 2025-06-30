@@ -16,5 +16,5 @@ spec:
 #Learnings
 #If you did not specify the nodeport IP manually, it will automatically assign an IP from the range(30000–32767)
 #Nodeport allows the user to connect to the service through the node port( port that is opened on all nodes)
-#When a request reaches the node port, it will be routed to the service and then there by routed to the backend pods
+#When a request reaches the node port, it will be routed to the service and then there by routed to the backend pods.
 #Drawback: Users have to manually type the port along with the nodeIP. also there will be multiple node IP that all exposes the same node port.
