@@ -1,4 +1,4 @@
-# ingress.yaml
+# path based ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,20 +7,33 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /    #This tells the NGINX Ingress controller to strip the path and rewrite it to / when forwarding to the backend services.
 spec:
   rules:
-  - host: aswinks.com  #Defines routing rules for the host 
+  - host: aswinks.com  #Defines routing rules for the host, Same host for all paths
     http:
       paths:
-      - path: /images
+      - path: /images      #Routing based on path
         pathType: Prefix   # consider aswinks.com/image and aswinks.com/image/ as same
         backend:
           service:
             name: image-service
             port:
               number: 80
-      - path: /video
+      - path: /video       #Routing based on path
         pathType: Prefix
         backend:
           service:
             name: video-service
             port:
               number: 80
+
+#Learnings
+#In path based ingress rule, there will be one hostname and traffic flow depends on the path.
+#Eg: aswinks.com/images -> forward traffic to image-service and aswinks.com/videos -> video-service
+#pathType: Prefix is used to ignore the trailing "\". eg: \images and \images\ are same.
+
+#Why path based?
+
+#Easier SSL setup (one cert)
+
+#Good for microservices behind a single front door
+
+#Useful when domain names are expensive or fixed

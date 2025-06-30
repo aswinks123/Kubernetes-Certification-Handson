@@ -1,0 +1,23 @@
+# video pod deployment yaml file
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+     app: video-pods
+  template:
+    metadata:
+      labels:
+        app: video-pods
+    spec:
+      containers:
+      - name: video-container
+        image: hashicorp/http-echo
+        args:
+        - "-text=This is the message from video pod. Serving the videos.."
+        ports:
+        - containerPort: 5678

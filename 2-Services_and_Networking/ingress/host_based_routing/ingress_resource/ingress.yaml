@@ -1,0 +1,42 @@
+# host based ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: host-based-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: images.aswinks.com  #Different host
+    http:
+      paths:
+      - path: / #Usually path is just /
+        pathType: Prefix
+        backend:
+          service:
+            name: image-service
+            port:
+              number: 80
+  - host: videos.aswinks.com
+    http:
+      paths:
+      - path: / #Usually path is just /
+        pathType: Prefix
+        backend:
+          service:
+            name: video-service
+            port:
+              number: 80
+
+
+#Learnings
+#In host based ingress rule, There will be multiple host addresses and the traffic will be forwarded based on hostnames
+#Eg: images.aswinks.com will forward the traffic to image-service, while videos.aswinks.com will forward to video-service.
+
+#Why host based?
+
+#Clean, separate URLs for branding or security
+
+#Easier cookie/session isolation
+
+#Used in SaaS apps with subdomain-based tenants
