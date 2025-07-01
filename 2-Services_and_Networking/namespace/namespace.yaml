@@ -4,8 +4,8 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: development-ns  #creating a new namespace named "development-ns"
----
 
+--- #This is used to separate multiple YAMl resource creation. Instead of multiple files, using --- we can create multiple resource using samle yaml
 
 #pod creation
 apiVersion: v1
