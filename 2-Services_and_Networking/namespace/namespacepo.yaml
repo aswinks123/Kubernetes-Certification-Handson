@@ -1,0 +1,30 @@
+#Namespace creation
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development-ns  #creating a new namespace named "development-ns"
+---
+
+
+#pod creation
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-pod
+  namespace: development-ns  #Spwcifying the namespace to add the pod
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+
+#Learnings
+#Namespaces are used to isolate resources in Kubernetes
+#We can specify -n to specify a namespace specific resources, eg: kubectl get pods -n development-ns
+#To see resources in all namespaces: kubectl get pods --all-namespaces
+#Namespace must be created and available before a resources can be deployed to it
+# kubectl create namespace <namespace name> creates a new namespace.

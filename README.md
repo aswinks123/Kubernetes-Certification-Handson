@@ -44,6 +44,10 @@ kubectl port-forward pod/nginx 8080:80
 
  kubectl port-forward service/my-service 8080:80
 
+#To Port-forward the ingress
+
+ kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 8080:80
+
 
 #To add label to node
 
@@ -56,3 +60,7 @@ kubectl label node minikube disktype-
 #To see the endpoints of a service
 
 kubectl get endpoints <service name>
+
+#View resource from all namesapces
+
+kubectl get pods --all-namespaces
