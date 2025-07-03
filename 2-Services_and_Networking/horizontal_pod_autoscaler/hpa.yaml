@@ -1,0 +1,29 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-resource
+spec:
+  scaleTargetRef:   #This tells the HPA what to scale.
+    apiVersion: apps/v1 #It's a resource from the apps API group (e.g., Deployment).
+    kind: Deployment #You’re scaling a Deployment.
+    name: hpa-deployment #The exact Deployment to autoscale.
+  minReplicas: 1 #Minimum number of pod replicas the HPA will keep, even when load is low.
+  maxReplicas: 5 #Maximum number of pod replicas the HPA will scale up to when load increases.
+  metrics:
+  - type: Resource  #The metric is a built-in resource metric
+    resource:
+      name: cpu   #It uses CPU utilization percentage.
+      target:
+        type: Utilization #Target is based on percentage utilization of requested CPU.
+        averageUtilization: 50 #Target is to keep average CPU utilization at 50% across
+
+
+#Learnings
+#Horizontal Pod Autoscaler: It’s a Kubernetes resource that automatically scales the number of pods in a Deployment (or other controllers) based on observed metrics like CPU or memory usage.
+#Pods must have CPU resource requests defined (resources.requests.cpu) for HPA to calculate CPU utilization percentage. (check the deployment yaml file)
+#HPA relies on metrics-server to provide CPU/memory usage metrics. Enble matrix server first.
+#HPA scales up quickly when load increases.
+#It scales down slowly and cautiously to avoid rapid changes.
+#Use kubectl get hpa and kubectl top pods to monitor scaling and metrics.
+
+

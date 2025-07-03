@@ -63,8 +63,12 @@ kubectl get endpoints <service name>
 
 #View resource from all namesapces
 
-kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces  or kubectl get pods -A
 
 #To use service account in a pod to call kubernetes cluster
 
 curl -k -H "Authorization: Bearer $token" https://192.168.49.2:8443/api/v1  #token is located at /var/run/secrets/kubernetes.io/serviceaccount inside the pod
+
+#Create a horizontal pod autoscaler
+
+kubectl autoscale deployment <name of deploy> --cpu-percent=50 --min=1 --max=3
