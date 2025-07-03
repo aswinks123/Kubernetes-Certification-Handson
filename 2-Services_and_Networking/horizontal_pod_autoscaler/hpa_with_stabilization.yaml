@@ -1,0 +1,33 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-deployment
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpa-deployment
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300        # Wait 5 minutes before scaling down
+      policies:  # Rules that control how quickly the pods can be removed:
+      - type: Percent
+        value: 20                            # Max 20% reduction at a time
+        periodSeconds: 60                    # Within 1 minute
+      - type: Pods
+        value: 1                             # Or max 1 pod at a time
+        periodSeconds: 60
+
+#Learnings
+#stabilizationWindowSeconds: stabilizationWindowSecond(in seconds) that the HPA waits before performing scale-in after metrics go below the threshold. This prevents frequent flapping.
+#policy: Rules that control how quickly the pods can be removed
+#Increasing stabilizationWindowSeconds slows down scale-in, making it more stable.
