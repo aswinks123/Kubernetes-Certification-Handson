@@ -72,3 +72,5 @@ curl -k -H "Authorization: Bearer $token" https://192.168.49.2:8443/api/v1  #tok
 #Create a horizontal pod autoscaler
 
 kubectl autoscale deployment <name of deploy> --cpu-percent=50 --min=1 --max=3
+
+#The DNS name of a Service follows this format: <service-name>.<namespace>.svc.cluster.local
