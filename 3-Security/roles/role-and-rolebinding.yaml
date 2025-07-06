@@ -1,0 +1,29 @@
+#Role creation
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default #Specify the namespace. must match the SA namespace
+  name: pod-reader  #name of the role to be created
+rules:   #This is where we specify the permission this role can have
+- apiGroups: [""]  #This specifies all resources in core api namespace. It can be "apps"  for apps api groups. Run : api-resources --api-group=""  to see the resource of "" api group
+  resources: ["pods"] #We are targeting the pods from "" api group
+  verbs: ["get", "watch", "list"] #Alloweded permissions on pod resource.
+
+---
+
+#Role binding
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-reader-binding  #Role binding name
+  namespace: default #Specify the namespace. must match the SA namespace
+subjects:
+- kind: ServiceAccount  #Subject to which the role should be binded. Here we target service account.
+  name: list-pod-sa #Name of the service account to bind the role
+  namespace: default
+roleRef:
+  kind: Role #What you want to bind. We want to bind to a role
+  name: pod-reader #Name of the role to bind with SA
+  apiGroup: rbac.authorization.k8s.io  #Role is part of this API group. we have to specify the API group of role resource
