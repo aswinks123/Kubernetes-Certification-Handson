@@ -74,3 +74,17 @@ curl -k -H "Authorization: Bearer $token" https://192.168.49.2:8443/api/v1  #tok
 kubectl autoscale deployment <name of deploy> --cpu-percent=50 --min=1 --max=3
 
 #The DNS name of a Service follows this format: <service-name>.<namespace>.svc.cluster.local
+
+#To view the cluster infor such as IP and DNS
+
+kubectl cluster-info
+
+In kuberenets the default authorization mode is AlwaysAllow
+
+#Create a token in kubernetes. that can be attached to a service account
+
+kubectl create token <service account name> --duration=10h # duration is expiry of thge token
+
+#To find the resources that are part of a particular api group
+
+kubectl api-resources --api-group="apps"  or kubectl api-resources --api-group=""  fo coreapi resources like pods
