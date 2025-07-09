@@ -68,25 +68,3 @@ Or export it as the default for your shell session:
 ```go
 export KUBECONFIG=./custom-config.yaml
 ```
-
-
-
-
-
-
-#----------------
-
-kubectl config set-cluster dev-cluster \
-  --server=https://example.com:6443 \
-  --certificate-authority=./ca.crt \
-  --embed-certs=true \
-  --kubeconfig=./custom-config.yaml
-
-
-
-
-kubectl config set-credentials dev-user \
-  --client-certificate=./dev-user.crt \
-  --client-key=./dev-user.key \
-  --embed-certs=true \
-  --kubeconfig=./custom-config.yaml
