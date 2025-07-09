@@ -26,7 +26,7 @@ Users (how to authenticate)
 
 Contexts (a shortcut saying “use this cluster with this user”)
 
-## A sample kubeconfig file
+## A sample kubeconfig file with explanation
 
 ```go
 apiVersion: v1  # Always v1 for kubeconfig.
