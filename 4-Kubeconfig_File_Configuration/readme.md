@@ -69,7 +69,9 @@ current-context: dev-context  #This is the contect currently kubectl is working 
 
 ## To set current-context
 
+```go
 kubectl config use-context prod-context
+```
 
 ## Commands to manage kubeconfig
 
