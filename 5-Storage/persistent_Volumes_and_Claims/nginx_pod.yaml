@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-hostpath-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: nginx-storage
+      mountPath: /usr/share/nginx/html
+
+  volumes:  #Adding the volume to the pod. Volumes are added to pod and not to a container
+  - name: nginx-storage #Name of the volume to be created
+    persistentVolumeClaim:  #Use the persistent volume claim to allocate the volume
+      claimName: nginx-pvc  #name of the clam to use

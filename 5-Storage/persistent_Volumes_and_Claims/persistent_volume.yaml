@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nginx-hostpath-pv  #Name of the persistent volume
+spec:
+  capacity:
+    storage: 1Gi    # 1GB storage
+  accessModes:  
+    - ReadWriteOnce   # Only one Pod at a time can mount the volume with read and write permissions.
+  hostPath: #It is a type of PV that uses the host disk for creating the volume
+    path: /data/nginx  #This is the path where the volume will be created in the host machine.
+    type: DirectoryOrCreate  #Create the directory if it doesn't exist
