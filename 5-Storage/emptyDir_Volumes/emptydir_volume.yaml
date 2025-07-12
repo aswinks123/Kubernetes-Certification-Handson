@@ -30,3 +30,10 @@ spec:
 # Sharing files between containers in the same Pod.
 # Temporary storage for processing (cache, intermediate data).
 # Buffer space for logs or downloads during runtime.
+
+# By default, an emptyDir uses the Node’s disk to store data.
+
+# If you specify:
+      # emptyDir:
+      #   medium: Memory
+# Kubernetes will mount a tmpfs (in-memory filesystem) at that volume’s mount path.
