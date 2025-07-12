@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir_volume_pod
+spec:
+  containers:
+  - name: nginx-container-1  #container-1
+    image: nginx 
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html    #This path inside the container is mounted to the volume named html-volume
+      name: html-volume
+
+  - name: busybox-container-1
+    image: busybox
+    command: [ "sh", "-c", "echo '<h1>Hello from emptyDir!</h1>' > /usr/share/nginx/html/index.html && sleep 3600" ]
+    volumeMounts:
+      - mountPath: /usr/share/nginx/html   #This path inside the container is mounted to the volume named html-volume
+        name: html-volume
+
+  volumes:  #Emptydir volume to store the container data
+  - name: html-volume
+    emptyDir: {}
+
+# Learnings
+# An emptyDir volume is a temporary directory that gets created when a Pod is assigned to a Node.
+# It exists as long as the Pod is running on that Node.
+# When the Pod is deleted or removed from the Node, the data in the emptyDir is lost.
+# The container just sees that directory (/usr/share/nginx/html) as a regular folder — it does not know about the volume's internal name (html-volume).
+# Why use emptyDir?:
+# Sharing files between containers in the same Pod.
+# Temporary storage for processing (cache, intermediate data).
+# Buffer space for logs or downloads during runtime.
