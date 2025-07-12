@@ -21,6 +21,11 @@ kubectl apply -f volume_claim.yaml
 kubectl apply -f nginx_pod.yaml
 ```
 
+```go
+kubectl describe pod nginx-hostpath-pod
+```
+
+
 ![alt text](./images/image-2.png)
 
 ## Add data to the PV and verify whether its reflected in pod
