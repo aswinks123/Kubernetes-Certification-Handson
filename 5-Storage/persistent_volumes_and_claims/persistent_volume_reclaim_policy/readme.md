@@ -46,13 +46,13 @@ When a PVC or PV is deleted the underlyign store is still preserved, but can't b
 
 ## How to revover the PV after the PV is deleted whe nusing reclaim policy
 
-If someone accidently delete the PVC or PV, It can be recovered by editing the PV and removing the "claimRef:" section.
+If someone accidently delete the PVC, It can be recovered by editing the PV and removing the "claimRef:" section.
 
 ```go
 kubectl edit pv mypv
 ```
 
-Search for the follwoing section and delete it
+Search for the following section and delete it
 
 ```go
 claimRef:
