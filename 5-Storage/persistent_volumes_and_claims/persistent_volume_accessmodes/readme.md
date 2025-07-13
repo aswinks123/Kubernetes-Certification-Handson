@@ -6,3 +6,6 @@
 | **ReadOnlyMany (ROX)**      | Mounted as read-only by many nodes                                                       |
 | **ReadWriteMany (RWX)**     | Mounted as read-write by many nodes                                                      |
 | **ReadWriteOncePod (RWOP)** | Mounted as read-write by a single Pod (newer mode from Kubernetes 1.22+, mainly for CSI) |
+
+
+## Note: Not all volumes support all access modes.
