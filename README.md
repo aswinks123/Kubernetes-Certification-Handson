@@ -88,3 +88,8 @@ kubectl create token <service account name> --duration=10h # duration is expiry 
 #To find the resources that are part of a particular api group
 
 kubectl api-resources --api-group="apps"  or kubectl api-resources --api-group=""  fo coreapi resources like pods
+
+#Log in to Minikube
+
+minikube ssh
+
