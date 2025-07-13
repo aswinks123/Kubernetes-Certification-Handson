@@ -8,11 +8,11 @@ Storage class can be in either of these reclaim policy.
 | ---------- | ------------------------------------------------------- | ------------- | ----------------------------------- |
 | `Retain`   | PV stays, storage stays. Manual cleanup needed.         | `Released`    | Storage is **NOT deleted**          |
 | `Delete`   | PV is deleted and so is the storage in cloud/NFS/etc.   | Gone          | Storage is **deleted**              |
-| `Recycle`  | Wipes storage (`rm -rf /data/*`) and makes PV reusable. | `Available`   | Storage wiped clean (⚠️ deprecated) |
+| `Recycle`  | Wipes storage (`rm -rf /data/*`) and makes PV reusable. | `Available`   | Storage wiped clean (deprecated) |
 
 ## Where do you set it?
 
-On a StorageClass:
+1. On a StorageClass:
 
 ```go
 apiVersion: storage.k8s.io/v1
@@ -24,7 +24,7 @@ reclaimPolicy: Delete  #Delete reclaim policy
 
 ```
 
-## On a PersistentVolume:
+2. On a PersistentVolume:
 
 ```go
 apiVersion: v1
