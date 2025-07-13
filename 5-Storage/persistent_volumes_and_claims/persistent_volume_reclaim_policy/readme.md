@@ -40,7 +40,30 @@ spec:
 
 ```
 
+## Can we use the PV after its reclaimed when using retain policy?
 
+When a PVC or PV is deleted the underlyign store is still preserved, but can't be used by any other pods.
 
+## How to revover the PV after the PV is deleted whe nusing reclaim policy
 
+If someone accidently delete the PVC or PV, It can be recovered by editing the PV and removing the "claimRef:" section.
+
+```go
+kubectl edit pv mypv
+```
+
+Search for the follwoing section and delete it
+
+```go
+claimRef:
+  name: mypvc
+  namespace: default
+  uid: <old-pvc-uid>
+```
+
+Now the PV becomes Available again. 
+
+Recreate the PV with same specs : Recreate the deleted PVC with the exact same name, size, storageClass, accessModes, and namespace as the original
+
+Then bind it to the new PVC
 
