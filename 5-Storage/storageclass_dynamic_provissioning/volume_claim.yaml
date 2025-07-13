@@ -11,5 +11,8 @@ spec:
   storageClassName: "standard" #This uses the standard storage class to provision the volume dynamically.
 
 
-
+# Learnings:
 # To list the storage class: kubectl get storageclass
+# Storage class binding mode can be "Immidiate" or "WaitForFirstConsumer"
+# Immidiate: PV will be created immidietly when the PVC is created
+# WaitForFirstConsumer: PV will only be created when a pod uses the PVC is schedules on a  # It prevent the PV creation beforehand.
