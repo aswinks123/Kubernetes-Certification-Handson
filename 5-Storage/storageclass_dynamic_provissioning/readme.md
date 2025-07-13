@@ -1,4 +1,4 @@
-## Storage class allows ro dynamically provission volume with out manually creating the PV
+## Storage class allows to dynamically provission volume with out manually creating the PV
 
 ![alt text](image.png)
 
