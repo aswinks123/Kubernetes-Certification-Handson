@@ -1,0 +1,13 @@
+#Create a config map
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myconfigmap
+data:
+  key1: "value1"  #Simple key value pair
+  key2: "value2"
+
+  big-data: |   #Multi line values
+    This is line 1  
+    This is line 2
+    This is line 3
