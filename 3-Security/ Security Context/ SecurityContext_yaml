@@ -1,0 +1,30 @@
+#A Security Context in Kubernetes defines privileges and access control settings for:
+# a Pod or  an individual container inside a Pod. It tells Kubernetes how the container or Pod should run from a security perspective.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-security-context
+spec:
+  securityContext:  #This prevent the pod from running as root. so the default user inside the pod will have the below mentioned uid,gid,and fsid
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: data
+          mountPath: /data
+  volumes:
+    - name: data
+      emptyDir: {}
+
+
+# Learnings
+# Enforce least privilege (don’t run as root).
+# Reduce attack surface by dropping unnecessary Linux capabilities.
+# Make workloads more secure by enabling read-only FS.
+# Comply with Kubernetes Pod Security Standards (Restricted, Baseline, Privileged).
+# Now when a pod tries to midify the host file system. It will fail
+
