@@ -1,4 +1,4 @@
-## Important Learning about config map
+## Important Learning about configMap
 
 ### Create from literal
 
@@ -19,7 +19,7 @@ Create a file and add values in the format
 
 key1=value1
 key2=value2
-the apply the config map
+then apply the config map
 
 kubectl create cm second-configmap --from-file=large.txt
 ```
@@ -35,3 +35,28 @@ kubectl create cm third-configmap --from-file=<path to that directory>  #All fil
 Note: There are multiple types of value supported 
 
 eg: multiline data is also supported
+
+### Immutable configMap
+
+By default, ConfigMaps are mutable. Once ConfigMaps is created as immutable, you cannot change or update them.
+
+Attempting to modify an immutable ConfigMap will cause an error.
+
+Ideal for production workloads where config stability is critical.
+
+Ensures configs don’t change unexpectedly.
+
+### How to create an immutable ConfigMap?
+
+```go
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-immutable-config
+immutable: true   #It enables immutable feature
+data:
+  key1: value1
+  key2: value2
+```
+
+
