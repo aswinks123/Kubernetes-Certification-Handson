@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-env-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      env:
+        #If there are multiple env to be set as env, then use separate references like shown below
+        - name: APP_ENV    #This will become the name of the env inside the container
+          valueFrom:       #Its value will be fetched from the below mentioned config map's value of key " APP_ENV "
+            configMapKeyRef: 
+              name: env-app-config #name of configmap to reference
+              key: APP_ENV  #Value of this key will be injected
+        - name: DB_HOST   #This will become the name of the env inside the container
+          valueFrom:      #Its value will be fetched from the below mentioned config map's value of key " DB_HOST "
+            configMapKeyRef:
+              name: env-app-config  #name of configmap to reference
+              key: DB_HOST #Value of this key will be injected
+
+#Learnings
+#Instead of mounting a ConfigMap as files, you can inject its key-value pairs directly into the container’s environment variables.
+#This will add teh config map value as an environment variable inside the pod.
+#Important: When config map is modified, the env will not automatically update instide the pod. You must restart/recreate the Pod to update the env.
