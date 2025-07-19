@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  app.properties: |
+    key1=value1-modified
+    key2=value2-modifies
+  db.properties: |
+    db_name=mydb
+    db_user=admin
+
+#Learnings
+#A volume mount allows you to bring that ConfigMap into your Pod’s filesystem.
+#Each key becomes a file, and the value is the content of that file.
+#The key of the configmap will become a file, and value of config map will become the content of that file.
+#when the config map is modified and reapplied, it will automatically update the file. No need to restart the pod
