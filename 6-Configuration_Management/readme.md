@@ -30,7 +30,7 @@ then apply the config map
 kubectl create cm second-configmap --from-file=large.txt
 ```
 
-### From multiple file
+### From multiple files
 
 when you have multiple files with config values, you can just point that directory
 
@@ -42,7 +42,7 @@ Note: There are multiple types of value supported
 
 eg: multiline data is also supported
 
-### Types of configMaps are explained inside the configMaps directory (please review it)
+## Note: Types of configMaps are explained inside the configMaps directory (please review it)
 
 ### Immutable configMap
 
