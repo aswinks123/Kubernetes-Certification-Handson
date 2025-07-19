@@ -1,8 +1,10 @@
-## Important Learning about configMap
+# Important Learning about configMap
 
 ### What is a configMap
 
 A ConfigMap is a Kubernetes object that lets you store non-confidential configuration data as key-value pairs.
+
+## Ways to create configMap
 
 ### Create from literal
 
@@ -39,6 +41,8 @@ kubectl create cm third-configmap --from-file=<path to that directory>  #All fil
 Note: There are multiple types of value supported 
 
 eg: multiline data is also supported
+
+### Types of configMaps are explained inside the configMaps directory (please review it)
 
 ### Immutable configMap
 
