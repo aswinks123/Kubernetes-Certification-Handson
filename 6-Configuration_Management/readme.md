@@ -1,5 +1,9 @@
 ## Important Learning about configMap
 
+### What is a configMap
+
+A ConfigMap is a Kubernetes object that lets you store non-confidential configuration data as key-value pairs.
+
 ### Create from literal
 
 ```go
@@ -38,13 +42,13 @@ eg: multiline data is also supported
 
 ### Immutable configMap
 
-By default, ConfigMaps are mutable. Once ConfigMaps is created as immutable, you cannot change or update them.
+1. By default, ConfigMaps are mutable. Once ConfigMaps is created as immutable, you cannot change or update them.
 
-Attempting to modify an immutable ConfigMap will cause an error.
+2. Attempting to modify an immutable ConfigMap will cause an error.
 
-Ideal for production workloads where config stability is critical.
+3. Ideal for production workloads where config stability is critical.
 
-Ensures configs don’t change unexpectedly.
+4. Ensures configs don’t change unexpectedly.
 
 ### How to create an immutable ConfigMap?
 
