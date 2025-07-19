@@ -1,7 +1,7 @@
 ## Important Learning about config map
 
-Create from literal
----
+### Create from literal
+
 
 kubectl create configmap  first-configmap --from-literal=key1=value1 --from-literal=key2=value2
 
