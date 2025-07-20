@@ -93,4 +93,4 @@ www-web-0   www-web-1    www-web-2
 
 ## Verify the DNS endpoint
 
-![alt text](image.png)
+![alt text](./nginx-statefulset/image.png)
