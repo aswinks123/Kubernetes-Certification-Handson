@@ -21,16 +21,16 @@ spec:
         volumeMounts:   #Mounts a volume named www at /usr/share/nginx/html. Each pod will have its own persistent volume mounted there.
         - name: www
           mountPath: /usr/share/nginx/html
-  volumeClaimTemplates:
+  volumeClaimTemplates:  #Create a PersistentVolumeClaim (PVC) for each pod.
   - metadata:
       name: www
     spec:
-      accessModes: ["ReadWriteOnce"]
+      accessModes: ["ReadWriteOnce"]  #Access mode is ReadWriteOnce : means only one pod can write to the volume at a time.
       resources:
         requests:
-          storage: 1Gi
+          storage: 1Gi  #Each PVC will request 1Gi of storage.
 
-
+#Learnings
 #Why headless? Because each pod needs to be addressable individually.
 #Pods are created in order: First web-0, then web-1, then web-2
 

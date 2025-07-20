@@ -7,7 +7,6 @@ data:
   APP_PORT: "8080"
   DB_HOST: mysql.db.internal
 
-
 #Learnings
 #Instead of mounting a ConfigMap as files, you can inject its key-value pairs directly into the container’s environment variables.
 #This will add teh config map value as an environment variable inside the pod.

@@ -90,3 +90,7 @@ web-0       web-1        web-2
 PVC:        PVC:         PVC:
 www-web-0   www-web-1    www-web-2
 ```
+
+## Verify the DNS endpoint
+
+![alt text](image.png)
