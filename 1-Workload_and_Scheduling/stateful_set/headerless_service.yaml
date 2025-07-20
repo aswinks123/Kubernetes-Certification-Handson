@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-headerless-service
+spec:
+  clusterIP: None        # Makes it headless
+  selector:
+    app: nginx
+  ports:
+  - port: 80
+
+
+#Learnings
+#clusterIP: None - This makes the service a headerless service
+#Here no IP is assigned to the service as its a headerless service

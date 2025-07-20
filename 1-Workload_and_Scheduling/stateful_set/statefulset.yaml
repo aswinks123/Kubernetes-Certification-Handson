@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet  #type of resource
+metadata:
+  name: web-stateful-set    #name f the stateful set, pods will be named web-stateful-set-0, web-stateful-set-1...etc
+spec:
+  serviceName: "nginx-headerless-service"     #Name of the headerless service that we created. This allows pods to get DNS hostnames like:web-stateful-set-0.nginx
+  replicas: 3  #You want 3 pods running: wweb-stateful-seeb-0, web-stateful-se-1, web-stateful-se-2.
+  selector:    #Selects pods with label app=nginx
+    matchLabels:
+      app: nginx
+  template:   #Defines the pod template for the StatefulSet.
+    metadata:
+      labels:  #Adds label app=nginx to pods.
+        app: nginx
+    spec:    #Defines containers in each pod.
+      containers:
+      - name: nginx
+        image: nginx:1.25
+        ports:
+        - containerPort: 80  #Exposes port 80 inside the pod (Nginx listens here).
+        volumeMounts:   #Mounts a volume named www at /usr/share/nginx/html. Each pod will have its own persistent volume mounted there.
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+
+
+#Why headless? Because each pod needs to be addressable individually.
+#Pods are created in order: First web-0, then web-1, then web-2
+
