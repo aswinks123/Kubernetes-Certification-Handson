@@ -93,3 +93,11 @@ kubectl api-resources --api-group="apps"  or kubectl api-resources --api-group="
 
 minikube ssh
 
+#To encode a password 
+
+ echo "abc123" | base64
+
+#To encode a password 
+
+ echo 'YWRtaW4=' | base64 --decode
+
