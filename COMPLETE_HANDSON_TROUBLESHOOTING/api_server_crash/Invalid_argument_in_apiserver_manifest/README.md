@@ -194,7 +194,7 @@ CONTAINER           IMAGE               CREATED             STATE               
 ```
 
 
-# Check the apiserver pod
+# Check the api-server pod
 
 ```
 kubectl -n kube-system get pod
