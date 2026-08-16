@@ -1,3 +1,5 @@
+# Kubernetes Imperative Commands and Yaml Representation in Data Structures
+
 1. Create a Pod 
 
 kubectl run nginx --image=nginx   # Creates a pod, not a deployment
@@ -46,3 +48,62 @@ To save the output as a file =   kubectl run nginx --image=nginx --dry-run=clien
 
 
 
+
+# How a simple POD spec is represented in data structure?
+
+
+## Sample pod spec:
+
+```
+spec:
+  containers:
+  - image: nginx
+    name: my-container-1
+    env:
+        - name: APP
+          value: PROD
+    ports:
+        - containerPort: 80
+```
+
+## Internal data structure representation:
+
+```
+spec (object)
+└── containers (list)
+    ├── container object
+    │   ├── image
+    │   ├── name
+    │   ├── env (list)
+    │   └── ports (list)
+    │
+    └── container object
+        ├── image
+        └── name
+```
+
+Every - under containers represents one container object in the containers list.
+
+
+
+## Reference model
+
+```
+Kubernetes Resource (object)
+│
+├── apiVersion → string
+├── kind       → string
+│
+├── metadata → object
+│   ├── name      → string
+│   ├── namespace → string
+│   └── labels    → object
+│       └── app → string
+│
+└── spec → object
+    └── containers → list
+        └── item → object
+            ├── name  → string
+            └── image → string
+
+```
