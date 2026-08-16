@@ -1,4 +1,4 @@
-# Kubernetes Imperative Commands and Yaml Representation in Data Structures
+# Kubernetes Imperative POD Commands and Yaml Representation in Data Structures
 
 1. Create a Pod 
 

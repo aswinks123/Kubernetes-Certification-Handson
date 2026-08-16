@@ -1,4 +1,4 @@
-# Kubernetes Imperative Commands and Yaml Representation in Data Structures
+# Kubernetes Imperative Commands for Deployment
 
 1. Create a Deployment
 
