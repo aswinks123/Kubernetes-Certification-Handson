@@ -70,7 +70,7 @@ Note: readOnlyRootFilesystem makes the container filesystem read-only, so only e
 
 - Add kubernetes Admission controller to makes sure only allowed resource can be created, it cerifiesor mutates the incoming API request and decide whether to allow or deny.
 
-- There are mainly 2 type of traffic in kuberntes. Make sre they are monitored and secured.
+- There are mainly 2 type of traffic in kubernetes. Make sure they are monitored and secured.
 
 1. North-South : The traffic coming from the user and from the resource to outdside -> LB -> API Server->Pod etc... and vice versa
 
