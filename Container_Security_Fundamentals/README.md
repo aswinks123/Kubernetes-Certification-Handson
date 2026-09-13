@@ -1,6 +1,6 @@
 # Container and Kubernetes Security Best Practise.
 
-## Docker file Side:
+## Docker and Dockerfile
 
 1. Use small base image such as apline
 
@@ -36,7 +36,7 @@ Concept of signed images - Learn it
 
 
 
-## Kubernetes Side:
+## Kubernetes
 
 - Set pod security context - non root user, readonlyrootFS, allow privilage escalation etc
 
@@ -89,7 +89,7 @@ Example usecase:
 5. No root user
 
 
-## Observability:
+## Observability
 
 - Enable logging.
 
